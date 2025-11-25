@@ -51,6 +51,7 @@
   background-color: white;
   border: 2px solid black;
   font-family: var(--font-akcent);
+  margin-block-end: 50px;
 }
 
 .main_card-title {
@@ -122,10 +123,153 @@
   grid-row: 3 / 4;
 }
 
+.image-grayscale {
+  filter: grayscale(70%);
+}
+
+.image-saturate {
+  filter: saturate(250%);
+}
+
+.image-brihtness {
+  filter: brightness(150%)
+}
+
+.image-invert {
+  filter: invert(80%); 
+}
+
+.image-sepia {
+  filter: sepia(100%);
+}
+
+.image-blur {
+  filter: blur(20px);
+}
+
+.image-hue-rotate {
+  filter: hue-rotate(0.25turn) contrast(50%); 
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(7px);
+}
+
+.object_interactive {
+  inline-size: clamp(310px, calc(var(--size-header)), 339px);
+  margin-inline: auto;
+  margin-block-end: 100px;
+}
+
+.button_interactive {
+  font-weight: var(--weight-press);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 8px;
+  font-size: 14px;
+  border: 2px solid black;
+  margin:0;
+  line-height: 90%;
+}
+
+.dialog_interactive {
+  padding: 30px;
+}
+
+.dialog[open] {
+  display: grid;
+  padding: 0;
+  margin: 0;
+}
+
+.dialog_main {
+  width: clamp(260px, calc(var(--size-header)), 355px);
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  row-gap: 30px;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.text_dialog {
+  grid-column: 2 / 3;
+  grid-row: 1 / 1;
+  font-family: var(--font-main), sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.dialog_interactive button {
+  inline-size: 100%;
+  block-size: 38px;
+  grid-column: span 2;
+  border: 2px solid black;
+}
+
+.like-icon:hover {
+  cursor: pointer;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding: 9px 17px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  block-size: 38px;
+  min-inline-size: 130px;
+}
+
+.button__text {
+  z-index: 2;
+  font-size: 14px;
+  line-height: 12.6px;
+  mix-blend-mode: difference;
+  position: relative;
+  color: aliceblue;
+}
+
+.button:hover {
+  color: #fff;
+}
+
+.button:hover path {
+  fill: #fff;
+}
+
+.button:hover::before {
+  content: "";
+  transform: translateX(0);
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
 @supports((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
   .image-label {
     -webkit-text-stroke: 1px white;
     text-stroke: 1px white;
     text-shadow: none;
+  }
+}
+
+@media (width <= 375px) {
+  .button_interactive {
+    flex-direction: column;
   }
 }
