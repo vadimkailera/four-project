@@ -98,14 +98,18 @@
 }
 
 .card__icon-button {
-  inline-size: 27px;
-  block-size: 24px;
+  inline-size: 39px;
+  block-size: 36px;
   grid-row: 3 / 4;
   align-self: center;
   justify-self: end;
   padding: 0;
   border: none;
   background-color: transparent;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: transparent;
+  transition: outline-color 0.3s ease;
 }
 
 .like-icon {
@@ -230,7 +234,7 @@ dialog::backdrop {
 }
 
 .button__text {
-  z-index: 2;
+  z-index: 1;
   font-size: 14px;
   line-height: 12.6px;
   mix-blend-mode: difference;
@@ -242,8 +246,17 @@ dialog::backdrop {
   color: #fff;
 }
 
-.button:hover path {
-  fill: #fff;
+
+.icon-save {
+  mix-blend-mode: difference;
+  z-index: 1;
+  position: relative;                                         /*Нихера не вылазит код*/
+  fill: aliceblue;
+  
+}
+
+.button:hover .icon-save {
+  fill: #000;
 }
 
 .button:hover::before {
@@ -258,6 +271,25 @@ dialog::backdrop {
   background-color: #000;
   transition: transform 0.5s ease-in-out;
   transform: translateX(-100%);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px black;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-offset: -1px;
+  outline-color: black;
 }
 
 @supports((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
